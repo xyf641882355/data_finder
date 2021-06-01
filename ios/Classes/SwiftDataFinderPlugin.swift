@@ -73,11 +73,10 @@ public class SwiftDataFinderPlugin: NSObject, FlutterPlugin {
 
   //设置公共属性()
   private func setCustomHeaderValue(call: FlutterMethodCall, result: FlutterResult) {
-    
-    let arguments: [String:Any] = call.arguments as! [String:Any]
-    print("setCustomHeaderValue run, \(arguments)");
+    let params:[String:Any]? = arguments["event"] as? [String:Any] ?? nil
+
     BDAutoTrack.setCustomHeaderValue { () -> [String : Any] in
-            return arguments
+            return params
         }
     return result(true)
   }
