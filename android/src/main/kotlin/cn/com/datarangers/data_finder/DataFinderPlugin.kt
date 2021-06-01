@@ -78,7 +78,7 @@ class DataFinderPlugin : FlutterPlugin, MethodCallHandler {
     private fun setCustomHeaderValue(@NonNull call: MethodCall, @NonNull result: Result) {
         val params = call.argument<Map<String, *>>("params")
         println("params: $params===========")
-        AppLog.setHeaderInfo(params);
+        AppLog.setCustomHeaderValue(params);
         result.success(true)
     }
 
