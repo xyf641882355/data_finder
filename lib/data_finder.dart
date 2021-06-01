@@ -35,6 +35,13 @@ class DataFinder {
     });
   }
 
+
+  ///
+  /// 用户登录后设置公共属性
+  /// String userUniqueID: 自己的账号体系ID, 并保证其唯一性
+  static void setCustomHeaderValue(Map params) {
+    _channel.invokeMethod("setCustomHeaderValue", params);
+  }
   ///
   /// 上报行为埋点
   /// String event: 事件名称

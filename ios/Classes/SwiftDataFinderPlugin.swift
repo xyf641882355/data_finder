@@ -26,6 +26,8 @@ public class SwiftDataFinderPlugin: NSObject, FlutterPlugin {
         start(call: call, result: result);
     case "setUserUniqueID":
         setUserUniqueID(call: call, result: result);
+    case "setCustomHeaderValue":
+        setCustomHeaderValue(call: call, result: result);
     case "onEventV3":
         onEventV3(call: call, result: result);
     default:
@@ -66,6 +68,17 @@ public class SwiftDataFinderPlugin: NSObject, FlutterPlugin {
     print("setUserUniqueID run, \(arguments)");
     let userUniqueID: String = arguments["userUniqueID"] as? String ?? ""
     BDAutoTrack.setCurrentUserUniqueID(userUniqueID)
+    return result(true)
+  }
+
+  //设置公共属性()
+  private func setCustomHeaderValue(call: FlutterMethodCall, result: FlutterResult) {
+    
+    let arguments: [String:Any] = call.arguments as! [String:Any]
+    print("setCustomHeaderValue run, \(arguments)");
+    BDAutoTrack.setCustomHeaderValue { () -> [String : Any] in
+            return arguments
+        }
     return result(true)
   }
     

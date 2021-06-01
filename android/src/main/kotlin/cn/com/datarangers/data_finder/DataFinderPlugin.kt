@@ -36,6 +36,7 @@ class DataFinderPlugin : FlutterPlugin, MethodCallHandler {
             "getPlatformVersion" -> result.success("Android ${android.os.Build.VERSION.RELEASE}")
             "start" -> start(call, result)
             "setUserUniqueID" -> setUserUniqueID(call, result)
+            "setCustomHeaderValue" -> setCustomHeaderValue(call, result)
             "onEventV3" -> onEventV3(call, result)
             else -> result.notImplemented()
         }
@@ -71,6 +72,13 @@ class DataFinderPlugin : FlutterPlugin, MethodCallHandler {
         }
         println("userUniqueID: $userUniqueID===========")
         AppLog.setUserUniqueID(userUniqueID);
+        result.success(true)
+    }
+
+    private fun setCustomHeaderValue(@NonNull call: MethodCall, @NonNull result: Result) {
+        val params = call.argument
+        println("params: $params===========")
+        AppLog.setHeaderInfo(params);
         result.success(true)
     }
 
