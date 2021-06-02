@@ -75,7 +75,7 @@ public class SwiftDataFinderPlugin: NSObject, FlutterPlugin {
     let arguments: [String:Any] = call.arguments as! [String:Any]
     print("onEventV3 run, \(arguments)");
     let event: String = arguments["event"] as? String ?? ""
-    let params:[String:Any]? = arguments["event"] as? [String:Any] ?? nil
+    let params:[String:Any]? = arguments["params"] as? [String:Any] ?? nil
     BDAutoTrack.eventV3(event, params: params)
     return result(true)
   }
